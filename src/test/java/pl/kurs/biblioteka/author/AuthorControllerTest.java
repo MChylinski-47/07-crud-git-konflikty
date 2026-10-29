@@ -24,7 +24,10 @@ class AuthorControllerTest {
     @Test
     void shouldReturn200WhenAuthorDoesExist() throws Exception {
         mockMvc.perform(get("/authors/1"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.books[0].id").isNumber())
+                .andExpect(jsonPath("$.books[0].title").isString())
+                .andExpect(jsonPath("$.books[0].author").doesNotExist());
     }
 
     @Test

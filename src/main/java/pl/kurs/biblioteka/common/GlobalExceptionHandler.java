@@ -21,7 +21,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ErrorMessage> handleDataIntegrityViolation(HttpServletRequest request) {
-        return buildResponseEntityErrorMessage(CONFLICT, "Index or primary key must be unique", request);
+        return buildResponseEntityErrorMessage(CONFLICT, "The operation conflicts with existing data.", request);
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
